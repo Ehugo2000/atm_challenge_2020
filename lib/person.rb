@@ -23,5 +23,11 @@ class Person
         @account = Account.new({owner: name})
     end
 
+    # def deposit(amount)
+
+       
+    # end
+
+
 end
 
