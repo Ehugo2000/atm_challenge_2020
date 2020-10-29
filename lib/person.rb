@@ -50,7 +50,7 @@ class Person
             # account = argument[:account]
             @cash += amount
             @account.balance -= amount
-
+            argument[:atm].funds -= amount
         end
     end
 end
