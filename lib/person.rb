@@ -46,12 +46,11 @@ class Person
             raise 'An ATM is required'
         else
             amount = argument[:amount]
-            pin_code = argument[:pin]
-            account = argument[:account]
-            
-            #amount = argument[:amount]
-            #@cash += amount
-            #@account.balance -= amount
+            # pin_code = argument[:pin]
+            # account = argument[:account]
+            @cash += amount
+            @account.balance -= amount
+
         end
     end
 end
