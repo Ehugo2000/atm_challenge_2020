@@ -1,5 +1,4 @@
 require './lib/account.rb'
-require './lib/atm.rb'
 
 class Person 
 
@@ -37,11 +36,8 @@ class Person
         raise 'No account present'
     end
 
-    def create_Atm
-        atm = Atm.new
-    end
-
     def withdraw(argument)
+        person.withdraw(atm: atm3)
         amount = argument[:amount]
         
         if argument[:atm] == nil then
