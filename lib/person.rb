@@ -7,7 +7,7 @@ class Person
    
     def initialize(attrs = {})
         set_name(attrs[:name])
-        @cash = 0
+        @cash = attrs[:cash]
         @account
     end
 
@@ -42,15 +42,24 @@ class Person
     end
 
     def withdraw(argument)
+        amount = argument[:amount]
+        
         if argument[:atm] == nil then
             raise 'An ATM is required'
+        elsif
+            @account.balance < amount
+            {status: false, message: 'insufficient funds in account', date: Date.today}
+        elsif
+            argument[:atm].funds < amount
+            { status: false, message: 'insufficient funds in ATM', date: Date.today}
+        elsif
+            argument[:pin] != @account.pin_code
+            {status: false, message: 'wrong pin', date: Date.today}
         else
-            amount = argument[:amount]
-            # pin_code = argument[:pin]
-            # account = argument[:account]
             @cash += amount
             @account.balance -= amount
             argument[:atm].funds -= amount
         end
     end
+    
 end
