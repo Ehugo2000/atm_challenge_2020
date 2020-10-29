@@ -23,11 +23,17 @@ class Person
         @account = Account.new({owner: name})
     end
 
-    # def deposit(amount)
+    def deposit(amount)
+        if (@account != nil )
+            true
+        else
+            missing_account
+    end
 
-       
-    # end
+    def missing_account
+        raise 'No account present'
+    end
 
-
+  end
 end
 
