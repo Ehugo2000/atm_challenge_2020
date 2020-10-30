@@ -54,4 +54,5 @@ class Person
             req[:atm].funds -= amount
         end
     end
+    
 end
