@@ -21,11 +21,11 @@ describe Account do
     end
 
     it 'deactivates account using the instance method' do
-    subject.deactivate
-    expect(subject.account_status).to eq :deactivated
+        subject.deactivate
+        expect(subject.account_status).to eq :deactivated
     end
 
-    it 'is expecte to have an owner' do
+    it 'is expected to have an owner' do
         expect(subject.owner).to eq person
     end
 

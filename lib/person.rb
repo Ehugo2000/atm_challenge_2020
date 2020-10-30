@@ -10,7 +10,6 @@ class Person
         @account
     end
 
-
     def set_name(obj)
         obj == nil ? raise_error : @name = obj
     end
@@ -36,26 +35,23 @@ class Person
         raise 'No account present'
     end
 
-    def withdraw(argument)
-        person.withdraw(atm: atm3)
-        amount = argument[:amount]
-        
-        if argument[:atm] == nil then
+    def withdraw(req)
+        amount = req[:amount]
+        if req[:atm] == nil then
             raise 'An ATM is required'
         elsif
             @account.balance < amount
             {status: false, message: 'insufficient funds in account', date: Date.today}
         elsif
-            argument[:atm].funds < amount
+            req[:atm].funds < amount
             { status: false, message: 'insufficient funds in ATM', date: Date.today}
         elsif
-            argument[:pin] != @account.pin_code
+            req[:pin] != @account.pin_code
             {status: false, message: 'wrong pin', date: Date.today}
         else
             @cash += amount
             @account.balance -= amount
-            argument[:atm].funds -= amount
+            req[:atm].funds -= amount
         end
     end
-    
 end

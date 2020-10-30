@@ -13,7 +13,7 @@ class Account
     end
 
     def set_expire_date
-        Date.today.next_year(Account::STANDARD_VALIDITY_YRS).strftime('%m/%y')
+        Date.today.next_year(STANDARD_VALIDITY_YRS).strftime('%m/%y')
     end
 
     def deactivate

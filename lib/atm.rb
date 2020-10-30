@@ -23,44 +23,44 @@ class Atm
         end
     end
 
-private
+    private
 
-def account_disable? (account_status)
-    account_status == :disable
-end
-
-def card_expired?(exp_date)
-    Date.strptime(exp_date, '%m/%y') < Date.today
-end
-
-def incorrect_pin?(pin_code, actual_pin)
-    pin_code != actual_pin
-end
-
-def insufficient_funds_in_atm?(amount)
-    @funds < amount
-end
-
-def insufficient_funds_in_account?(amount, account)
-    amount > account.balance
-end
-
-def perform_transaction(amount, account)
-    @funds -= amount
-    account.balance = account.balance - amount
-    { status: true, message: 'success', date: Date.today, amount: amount, bills: add_bills(amount)}
-end
-
-def add_bills(amount)
-    denominations = [20, 10, 5]
-    bills = []
-    denominations.each do |bill|
-        while amount - bill >=0
-            amount -= bill
-            bills << bill
-        end
+    def account_disable? (account_status)
+        account_status == :disable
     end
-    bills
-end
+
+    def card_expired?(exp_date)
+        Date.strptime(exp_date, '%m/%y') < Date.today
+    end
+
+    def incorrect_pin?(pin_code, actual_pin)
+        pin_code != actual_pin
+    end
+
+    def insufficient_funds_in_atm?(amount)
+        @funds < amount
+    end
+
+    def insufficient_funds_in_account?(amount, account)
+        amount > account.balance
+    end
+
+    def perform_transaction(amount, account)
+        @funds -= amount
+        account.balance = account.balance - amount
+        { status: true, message: 'success', date: Date.today, amount: amount, bills: add_bills(amount)}
+    end
+
+    def add_bills(amount)
+        denominations = [20, 10, 5]
+        bills = []
+        denominations.each do |bill|
+            while amount - bill >=0
+                amount -= bill
+                bills << bill
+            end
+        end
+        bills
+    end
 
 end
